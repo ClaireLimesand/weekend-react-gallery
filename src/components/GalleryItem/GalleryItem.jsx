@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "./GalleryItem.css";
 
 function GalleryItem({picture}) {
     console.log('in GalleryItem');
@@ -8,6 +9,22 @@ function GalleryItem({picture}) {
     const addLike = () => {
         console.log('howdy');
         setCountLikes(countLikes + 1);
+    }
+
+    const likeDisplay = () => {
+        if (countLikes === 0) {
+            return (
+                <p>Nobody has liked this</p>
+            )
+        } if (countLikes === 1) {
+            return (
+                <p>One person has liked this</p>
+            )
+        } else {
+            return (
+                <p>{countLikes} people like this</p>
+            )
+        }
     }
 
     const changeDisplay = () => {
@@ -21,7 +38,6 @@ function GalleryItem({picture}) {
             <div>
                 <img onClick={changeDisplay} src={picture.path}/>
                 <button onClick={addLike}>Like it!</button>
-                <p>{countLikes} people like this!</p>
             </div>
         )
     } else {
@@ -30,15 +46,15 @@ function GalleryItem({picture}) {
             <div>
                 <p onClick={changeDisplay}>{picture.description}</p>
                 <button onClick={addLike}>Like it!</button>
-                <p>{countLikes} people like this!</p>
             </div>
         )
     };
     };
 
     return (
-        <div>
+        <div  className="sideBySide">
             {displayPicture()}
+            {likeDisplay()}
         </div>
     )
 }

@@ -1,0 +1,8 @@
+* {
+    font-family: Georgia, Times, serif;
+}
+
+.sideBySide {
+    display: inline-block;
+    padding: 2em;
+}
