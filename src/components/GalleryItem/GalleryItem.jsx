@@ -1,15 +1,23 @@
 import { useState } from 'react';
 import "./GalleryItem.css";
+import axios from 'axios';
 
 function GalleryItem({picture}) {
     console.log('in GalleryItem');
     const [showPicture, setShowPicture] = useState(true);
     const [countLikes, setCountLikes] = useState(picture.likes);
 
-    const addLike = () => {
+    const addLike = () => { 
         console.log('howdy');
-        setCountLikes(countLikes + 1);
-    }
+        axios({
+            method: 'PUT',
+            url: `/gallery/like/${picture.id}`
+        }).then((response) => {
+            setCountLikes(countLikes + 1);
+        }).catch((error) => {
+            console.log('PUT failed', error);
+        });
+    };
 
     const likeDisplay = () => {
         if (countLikes === 0) {
@@ -38,6 +46,7 @@ function GalleryItem({picture}) {
             <div>
                 <img onClick={changeDisplay} src={picture.path}/>
                 <button onClick={addLike}>Like it!</button>
+                {/* {likeDisplay()} */}
             </div>
         )
     } else {
@@ -46,6 +55,7 @@ function GalleryItem({picture}) {
             <div>
                 <p onClick={changeDisplay}>{picture.description}</p>
                 <button onClick={addLike}>Like it!</button>
+                {/* {likeDisplay()} */}
             </div>
         )
     };

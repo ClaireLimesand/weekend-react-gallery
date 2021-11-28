@@ -1,9 +1,24 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# React Gallery
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Duration: weekend sprint
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+This photo gallery is my first project made using React. A user can click on a photo to view it's description, or click the "Like It!" button. The number of Likes will be diplayed on the DOM underneath the photo. Using react and components for the fist time was a challenge but I learned so much making this little photo gallery! 
+
+## Prerequesites
+
+None 
+
+## Usage
+
+1. Click a photo to view it's description 
+2. If you like a photo click "Like It!" 
+
+## Built With
+
+React, Javascript, CSS 
+
+## Acknowledgement
+
+Thanks to Prime Digital Academy who equipped and helped me to make this application a reality. Special thanks to my classmates and my instructor Matt Black.

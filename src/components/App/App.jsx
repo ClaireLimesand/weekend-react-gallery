@@ -9,10 +9,23 @@ import GalleryItem from '../GalleryItem/GalleryItem';
 function App() {
 
   const [galleryList, setGalleryList] = useState([]);
+  // const [countLikes, setCountLikes] = useState(0);
   
   useEffect(() => {
     fetchGallery();
   }, []);
+
+//   const updateLikes = () => { 
+//     console.log('howdy');
+//     axios({
+//         method: 'PUT',
+//         url: `/gallery/like/${picture.id}`
+//     }).then((response) => {
+//         fetchGallery();
+//     }).catch((error) => {
+//         console.log('PUT failed', error);
+//     });
+// };
 
   const fetchGallery = () => {
     axios({
