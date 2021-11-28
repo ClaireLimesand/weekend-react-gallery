@@ -2,7 +2,7 @@ import { useState } from 'react';
 import "./GalleryItem.css";
 import axios from 'axios';
 
-function GalleryItem({picture}) {
+function GalleryItem({picture, fetchGallery}) {
     console.log('in GalleryItem');
     const [showPicture, setShowPicture] = useState(true);
     const [countLikes, setCountLikes] = useState(picture.likes);
@@ -13,7 +13,7 @@ function GalleryItem({picture}) {
             method: 'PUT',
             url: `/gallery/like/${picture.id}`
         }).then((response) => {
-            setCountLikes(countLikes + 1);
+            fetchGallery();
         }).catch((error) => {
             console.log('PUT failed', error);
         });
@@ -42,20 +42,14 @@ function GalleryItem({picture}) {
     const displayPicture = () => {
     if (showPicture) {
         return (
-            // <p onClick={changeDisplay}>picture!</p>
             <div>
                 <img onClick={changeDisplay} src={picture.path}/>
-                <button onClick={addLike}>Like it!</button>
-                {/* {likeDisplay()} */}
             </div>
         )
     } else {
         return (
-            // <p onClick={changeDisplay}>description</p>
             <div>
                 <p onClick={changeDisplay}>{picture.description}</p>
-                <button onClick={addLike}>Like it!</button>
-                {/* {likeDisplay()} */}
             </div>
         )
     };
@@ -65,6 +59,7 @@ function GalleryItem({picture}) {
         <div  className="sideBySide">
             {displayPicture()}
             {likeDisplay()}
+            <button onClick={addLike} className="likeButton">Like it!</button>
         </div>
     )
 }

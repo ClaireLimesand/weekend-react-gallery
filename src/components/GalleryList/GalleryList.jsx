@@ -1,11 +1,11 @@
 import GalleryItem from "../GalleryItem/GalleryItem";
 
-function GalleryList({galleryList}) {
+function GalleryList({galleryList, fetchGallery}) {
     console.log('in GalleryList')
     return (
         <div>
             {galleryList.map(picture => {
-                return <GalleryItem picture={picture} key={picture.id}/>
+                return <GalleryItem picture={picture} fetchGallery={fetchGallery} key={picture.id}/>
             })}
         </div>
     )
