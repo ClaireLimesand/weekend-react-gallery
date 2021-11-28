@@ -15,18 +15,6 @@ function App() {
     fetchGallery();
   }, []);
 
-//   const updateLikes = () => { 
-//     console.log('howdy');
-//     axios({
-//         method: 'PUT',
-//         url: `/gallery/like/${picture.id}`
-//     }).then((response) => {
-//         fetchGallery();
-//     }).catch((error) => {
-//         console.log('PUT failed', error);
-//     });
-// };
-
   const fetchGallery = () => {
     axios({
       method: 'GET',

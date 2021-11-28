@@ -5,7 +5,6 @@ import axios from 'axios';
 function GalleryItem({picture, fetchGallery}) {
     console.log('in GalleryItem');
     const [showPicture, setShowPicture] = useState(true);
-    const [countLikes, setCountLikes] = useState(picture.likes);
 
     const addLike = () => { 
         console.log('howdy');
@@ -20,17 +19,17 @@ function GalleryItem({picture, fetchGallery}) {
     };
 
     const likeDisplay = () => {
-        if (countLikes === 0) {
+        if (picture.likes === 0) {
             return (
                 <p>Nobody has liked this</p>
             )
-        } if (countLikes === 1) {
+        } if (picture.likes === 1) {
             return (
                 <p>One person has liked this</p>
             )
         } else {
             return (
-                <p>{countLikes} people like this</p>
+                <p>{picture.likes} people like this</p>
             )
         }
     }
