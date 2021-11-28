@@ -3,6 +3,12 @@ import { useState } from 'react';
 function GalleryItem({picture}) {
     console.log('in GalleryItem');
     const [showPicture, setShowPicture] = useState(true);
+    const [countLikes, setCountLikes] = useState(picture.likes);
+
+    const addLike = () => {
+        console.log('howdy');
+        setCountLikes(countLikes + 1);
+    }
 
     const changeDisplay = () => {
         setShowPicture(!showPicture)
@@ -14,7 +20,8 @@ function GalleryItem({picture}) {
             // <p onClick={changeDisplay}>picture!</p>
             <div>
                 <img onClick={changeDisplay} src={picture.path}/>
-                <button>Like it!</button>
+                <button onClick={addLike}>Like it!</button>
+                <p>{countLikes} people like this!</p>
             </div>
         )
     } else {
@@ -22,7 +29,8 @@ function GalleryItem({picture}) {
             // <p onClick={changeDisplay}>description</p>
             <div>
                 <p onClick={changeDisplay}>{picture.description}</p>
-                <button>Like it!</button>
+                <button onClick={addLike}>Like it!</button>
+                <p>{countLikes} people like this!</p>
             </div>
         )
     };

@@ -5,10 +5,10 @@ function GalleryList({galleryList}) {
     return (
         <div>
             {galleryList.map(picture => {
-                return <GalleryItem picture={picture} />
+                return <GalleryItem picture={picture} key={picture.id}/>
             })}
         </div>
     )
-}
+};
 
 export default GalleryList;
