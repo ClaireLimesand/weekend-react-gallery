@@ -1,11 +1,15 @@
+// import useState, axios, and my CSS file
 import { useState } from 'react';
 import "./GalleryItem.css";
 import axios from 'axios';
-
+// takes the picture from GalleryList and the fetchGallery function from App.jsx
 function GalleryItem({picture, fetchGallery}) {
     console.log('in GalleryItem');
     const [showPicture, setShowPicture] = useState(true);
 
+    // really struggled with whether to have the PUT route here or in App.jsx. Ultimately this just made 
+    // more sense to me but I would be curious to know which way is correct
+    // when likeButton is clicked this put route updates the number of likes 
     const addLike = () => { 
         console.log('howdy');
         axios({
@@ -17,7 +21,7 @@ function GalleryItem({picture, fetchGallery}) {
             console.log('PUT failed', error);
         });
     };
-
+    // conditional for how DOM displays number of likes in order to replicate mockup 
     const likeDisplay = () => {
         if (picture.likes === 0) {
             return (
@@ -33,11 +37,11 @@ function GalleryItem({picture, fetchGallery}) {
             )
         }
     }
-
+    // switches showPicture between true and false 
     const changeDisplay = () => {
         setShowPicture(!showPicture)
     }
-
+    // if showPicture is true the picture is displayed. If it is false the description is displayed
     const displayPicture = () => {
     if (showPicture) {
         return (
@@ -53,7 +57,7 @@ function GalleryItem({picture, fetchGallery}) {
         )
     };
     };
-
+    // returns the displayPicture function, the likeDisplay function and the likeButton
     return (
         <div  className="sideBySide">
             {displayPicture()}

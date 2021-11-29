@@ -1,20 +1,18 @@
+// importing react, useState, useEffect, axios and CSS file
 import React from 'react';   
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
-
+// importing GalleryList
 import GalleryList from '../GalleryList/GalleryList';
-import GalleryItem from '../GalleryItem/GalleryItem';
 
 function App() {
-
   const [galleryList, setGalleryList] = useState([]);
-  // const [countLikes, setCountLikes] = useState(0);
-  
+  // runs fetchGallery after render
   useEffect(() => {
     fetchGallery();
   }, []);
-
+  // request out data from the gallery router. updates galleryList
   const fetchGallery = () => {
     axios({
       method: 'GET',
@@ -26,7 +24,7 @@ function App() {
       console.log('GET /gallery failed', error);
     });
   };
-  
+  //returns html and takes galleryList and fetchGallery
   return (
     <div className="App">
       <header className="App-header">
